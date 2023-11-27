@@ -14,8 +14,7 @@ class RemotePagedReposRepository @Inject constructor(
 
     override fun getReposPager(): Pager<Int, Repo> =
         Pager(
-            config = PagingConfig(pageSize = reposPagingSource.pageSize),
-            pagingSourceFactory = {
-                reposPagingSource
-            })
+            config = PagingConfig(pageSize = 20),
+            pagingSourceFactory = { reposPagingSource }
+        )
 }
