@@ -13,10 +13,11 @@ import javax.inject.Singleton
 class RemotePagedReposRepository @Inject constructor(
     private val reposPagingSource: ReposPagingSource
 ) : PagedReposRepository {
-    override fun getPagedReposFlow(pageSize: Int): Flow<PagingData<Repo>> =
+
+    override fun getReposPager(pageSize: Int): Pager<Int, Repo> =
         Pager(
             config = PagingConfig(pageSize = 20),
             pagingSourceFactory = {
                 reposPagingSource
-            }).flow
+            })
 }
