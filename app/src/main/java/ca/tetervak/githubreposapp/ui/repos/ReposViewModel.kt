@@ -16,6 +16,6 @@ class ReposViewModel @Inject constructor(
 ) : ViewModel() {
 
     val repos: Flow<PagingData<Repo>> =
-        pagedReposRepository.getReposPager(pageSize = 20).flow.cachedIn(viewModelScope)
+        pagedReposRepository.getReposPager().flow.cachedIn(viewModelScope)
 }
 
