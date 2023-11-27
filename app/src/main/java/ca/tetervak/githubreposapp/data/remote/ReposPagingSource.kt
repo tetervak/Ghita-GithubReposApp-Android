@@ -12,7 +12,7 @@ class ReposPagingSource @Inject constructor(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Repo> {
         try {
-            val nextPage = params.key ?: 1
+            val nextPage = params.key ?: 1 // the page that we want to get
             val repos = reposApi.getRepos(nextPage).repos
             return LoadResult.Page(
                 data = repos,

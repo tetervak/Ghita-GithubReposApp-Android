@@ -78,7 +78,7 @@ fun RepositoryItem(index: Int, item: Repo) {
             modifier = Modifier.padding(8.dp)
         ) {
             Text(
-                text = index.toString(),
+                text = (index + 1).toString(),
                 style = MaterialTheme.typography.headlineMedium,
                 modifier = Modifier
                     .weight(0.2f)
