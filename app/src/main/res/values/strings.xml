@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Repositories app</string>
+    <string name="github_repositories">Github Repositories</string>
+    <string name="refresh">Refresh</string>
 </resources>

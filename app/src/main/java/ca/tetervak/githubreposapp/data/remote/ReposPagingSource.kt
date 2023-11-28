@@ -5,8 +5,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 
 
-val TAG: String = "ReposPagingSource"
-
+const val TAG: String = "ReposPagingSource"
 
 class ReposPagingSource(
     private val reposApi: ReposApi

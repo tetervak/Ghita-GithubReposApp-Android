@@ -2,7 +2,6 @@ package ca.tetervak.githubreposapp.ui.repos
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -18,58 +17,58 @@ import ca.tetervak.githubreposapp.data.remote.Repo
 
 
 @Composable
-fun ReposScreen(repos: LazyPagingItems<Repo>) {
-    Column(){
-        Button(onClick = { repos.refresh() }) {
-            Text("Refresh")
+fun ReposScreen(repos: LazyPagingItems<Repo>, modifier: Modifier = Modifier) {
+    LazyColumn(
+        contentPadding = PaddingValues(
+            vertical = 8.dp,
+            horizontal = 8.dp
+        ),
+        modifier = modifier
+    ) {
+        when (val refreshLoadState = repos.loadState.refresh) {
+            is LoadState.Loading -> {
+                item {
+                    LoadingItem(Modifier.fillParentMaxSize())
+                }
+            }
+
+            is LoadState.Error -> {
+                val error = refreshLoadState.error
+                item {
+                    ErrorItem(
+                        message = error.localizedMessage ?: "",
+                        modifier = Modifier.fillParentMaxSize(),
+                        onClick = { repos.retry() }
+                    )
+                }
+            }
+
+            else -> Unit
         }
-        LazyColumn(
-            contentPadding = PaddingValues(
-                vertical = 8.dp,
-                horizontal = 8.dp
-            )
-        ) {
-            when(val refreshLoadState = repos.loadState.refresh){
-                is LoadState.Loading -> {
-                    item {
-                        LoadingItem(Modifier.fillParentMaxSize())
-                    }
-                }
-                is LoadState.Error -> {
-                    val error = refreshLoadState.error
-                    item {
-                        ErrorItem(
-                            message = error.localizedMessage ?: "",
-                            modifier = Modifier.fillParentMaxSize(),
-                            onClick = { repos.retry() }
-                        )
-                    }
-                }
-                else -> Unit
-            }
 
-            items(repos.itemCount) { index ->
-                repos[index]?.let { repo ->
-                    RepositoryItem(index, repo)
+        items(repos.itemCount) { index ->
+            repos[index]?.let { repo ->
+                RepositoryItem(index, repo)
+            }
+        }
+
+        when (val appendLoadState = repos.loadState.append) {
+            is LoadState.Loading -> {
+                item {
+                    LoadingItem(Modifier.fillMaxWidth())
                 }
             }
 
-            when(val appendLoadState = repos.loadState.append){
-                is LoadState.Loading -> {
-                    item {
-                        LoadingItem(Modifier.fillMaxWidth())
-                    }
+            is LoadState.Error -> {
+                val error = appendLoadState.error
+                item {
+                    ErrorItem(
+                        message = error.localizedMessage ?: "",
+                        onClick = { repos.retry() })
                 }
-                is LoadState.Error -> {
-                    val error = appendLoadState.error
-                    item {
-                        ErrorItem(
-                            message = error.localizedMessage ?: "",
-                            onClick = { repos.retry() })
-                    }
-                }
-                else -> Unit
             }
+
+            else -> Unit
         }
     }
 }
