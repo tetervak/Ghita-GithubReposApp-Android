@@ -3,14 +3,12 @@ package ca.tetervak.githubreposapp.data.remote
 import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import javax.inject.Inject
-import javax.inject.Singleton
 
 
 val TAG: String = "ReposPagingSource"
 
-@Singleton
-class ReposPagingSource @Inject constructor(
+
+class ReposPagingSource(
     private val reposApi: ReposApi
 ) : PagingSource<Int, Repo>() {
 
