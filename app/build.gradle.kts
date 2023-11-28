@@ -104,8 +104,8 @@ dependencies {
     // needed to initialize the Hilt worker factory
     //implementation("androidx.startup:startup-runtime:1.1.1")
 
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.google.code.gson:gson:2.9.0")
+    //implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    //implementation("com.google.code.gson:gson:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     implementation("androidx.paging:paging-compose:3.3.0-alpha02")
