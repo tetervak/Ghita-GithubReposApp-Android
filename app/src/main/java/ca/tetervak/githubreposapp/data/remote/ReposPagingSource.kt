@@ -18,7 +18,7 @@ class ReposPagingSource(
             Log.d(TAG,"requested page=$nextPage, loadSize=$loadSize")
             val repos = reposApi.getRepos(
                 page = nextPage,
-                pageSize = loadSize,
+                pageSize = 20,
             ).repos
             Log.d(TAG,"received page=$nextPage, size=${repos.size}")
             return LoadResult.Page(
