@@ -3,7 +3,7 @@ package ca.tetervak.githubreposapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import ca.tetervak.githubreposapp.ui.AppScreen
+import ca.tetervak.githubreposapp.ui.AppRootScreen
 import ca.tetervak.githubreposapp.ui.theme.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,7 +14,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AppTheme {
-                AppScreen()
+                AppRootScreen()
             }
         }
     }

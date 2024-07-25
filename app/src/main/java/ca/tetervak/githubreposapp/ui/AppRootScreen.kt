@@ -28,7 +28,7 @@ import ca.tetervak.githubreposapp.data.remote.Repo
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AppScreen() {
+fun AppRootScreen() {
     val viewModel: ReposViewModel = viewModel()
     val reposFlow = viewModel.repos
     val lazyRepoItems: LazyPagingItems<Repo> =
