@@ -76,8 +76,8 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.48.1")
 
     // needed for the navigation with view models
-    val navVersion = "2.7.5"
-    implementation("androidx.navigation:navigation-compose:$navVersion")
+    //val navVersion = "2.7.5"
+    //implementation("androidx.navigation:navigation-compose:$navVersion")
 
     // needed for the view model per destination, the hiltViewModel() function
     //implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
@@ -104,8 +104,8 @@ dependencies {
     // needed to initialize the Hilt worker factory
     //implementation("androidx.startup:startup-runtime:1.1.1")
 
-    //implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    //implementation("com.google.code.gson:gson:2.9.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.google.code.gson:gson:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     implementation("androidx.paging:paging-compose:3.3.0-alpha02")

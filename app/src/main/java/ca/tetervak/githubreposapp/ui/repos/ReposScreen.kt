@@ -9,10 +9,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
+import ca.tetervak.githubreposapp.R
 import ca.tetervak.githubreposapp.data.remote.Repo
 
 
@@ -36,7 +38,7 @@ fun ReposScreen(repos: LazyPagingItems<Repo>, modifier: Modifier = Modifier) {
                 val error = refreshLoadState.error
                 item {
                     ErrorItem(
-                        message = error.localizedMessage ?: "",
+                        message = error.localizedMessage ?: stringResource(R.string.loading_error),
                         modifier = Modifier.fillParentMaxSize(),
                         onClick = { repos.retry() }
                     )
